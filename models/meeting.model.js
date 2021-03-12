@@ -16,10 +16,14 @@ var meetingSchema = new Schema({
     type: Number
   },
   roomId: {
-    type: Number
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Room', 
+    required: true 
   },
-  userId: {
-    type: String
+  userId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: true 
   }
 }, 
 {

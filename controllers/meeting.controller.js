@@ -52,15 +52,28 @@ exports.findOne = (req, res) => {
 // Update a meeting identified by the meetingId
 exports.update = (req, res) => {
     let meeting = req.body;
+    const updateQuery = {};
+    if (meeting.name) {
+        updateQuery.name = meeting.name;
+    }
+    if (meeting.date) {
+        updateQuery.date = meeting.date;
+    }
+    if (meeting.slotFrom) {
+        updateQuery.slotFrom = meeting.slotFrom;
+    }
+    if (meeting.slotTo) {
+        updateQuery.slotTo = meeting.slotTo;
+    }
+    if (meeting.roomId) {
+        updateQuery.roomId = meeting.roomId;
+    }
+    if (meeting.userId) {
+        updateQuery.userId = meeting.userId;
+    }
+
     // Find meeting and update it with the request body
-    Meeting.findByIdAndUpdate(req.params.meetingId, {
-        name: meeting.name,
-        date: meeting.date,
-        slotFrom: meeting.slotFrom,
-        slotTo: meeting.slotTo,
-        roomId: meeting.roomId,
-        userId: meeting.userId
-    }, { new: true })
+    Meeting.findByIdAndUpdate(req.params.meetingId, updateQuery, { new: true })
         .then(meeting => {
             if (!meeting) {
                 return res.status(404).send({
