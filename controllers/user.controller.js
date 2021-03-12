@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const User = require('../models/user.model');
 
 // Create and Save a new User
@@ -20,8 +21,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all users from the database.
 exports.findAll = (req, res) => {
-    let meetingService = new MeetingService();
-    res.send(meetingService.fetchUserList());
+
 };
 
 // Find a single note with a userId

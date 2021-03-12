@@ -46,6 +46,4 @@ testem.log
 Thumbs.db
 
 # exclude config file
-/config/config.env
-
-
+config/config.env

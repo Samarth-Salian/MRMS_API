@@ -1,10 +1,15 @@
+const jwt = require('jsonwebtoken');
 module.exports = {
-    ensureAuthenticated: function (req, res, next) {
-        console.log(" req "+req.isAuthenticated() + " req.user "+ req.user);
-      if (!req.isAuthenticated()) {
-        return res.redirect('/login');
-      }
-      next();   
-   
+  ensureAuthenticated: function (req, res, next) {
+    try {
+      const token = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, process.env.JWT_KEY);
+      req.userData = decoded;
+      next();
+    } catch (error) {
+      return res.status(401).json({
+        message: 'Authorization failed'
+      });
     }
   }
+}

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { ensureAuthenticated} = require('../middleware/auth')
+const { ensureAuthenticated } = require('../middleware/auth')
 const path = require('path');
 
 router.use('/login', (req, res) => {

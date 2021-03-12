@@ -1,20 +1,16 @@
 const router = require('express').Router();
 
 const meeting = require('../controllers/meeting.controller');
-const { ensureAuthenticated } = require('../middleware/auth')
-
-router.get('/search', (req, res) => {
-    let meetingService = new MeetingService();
-    res.send(meetingService.fetchRoomList());
-});
+const { ensureAuthenticated } = require('../middleware/auth');
+const { createMeetingValidate, updateMeetingValidate } = require('../schemas/meeting.schema')
 
 router.get('/', meeting.findAll);
 
 router.get('/:meetingId', meeting.findOne);
 
-router.post('/', meeting.create);
+router.post('/', ensureAuthenticated, createMeetingValidate, meeting.create);
 
-router.put('/:meetingId', meeting.update);
+router.put('/:meetingId', updateMeetingValidate, meeting.update);
 
 router.delete('/:meetingId', meeting.delete);
 

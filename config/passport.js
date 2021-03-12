@@ -1,6 +1,8 @@
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var User = require('../models/user.model');
 
+
+
 module.exports = function (passport) {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
@@ -8,6 +10,7 @@ module.exports = function (passport) {
         callbackURL: process.env.DOMAIN + '/auth/google/callback'
     },
         function (accessToken, refreshToken, profile, done) {
+
             console.log(`accessToken : ${accessToken} 
                    refreshToken: ${refreshToken}
                    profile     : ${JSON.stringify(profile)} `);
@@ -38,20 +41,23 @@ module.exports = function (passport) {
                     });
                 } else {
                     //found user. Return
-                    return done(null, user);
+  
+                    return done(null, user );
                 }
             });
         }
 
     ));
+
+    
     // Used to stuff a piece of information into a cookie
-    passport.serializeUser((user, done) => {
+    passport.serializeUser((user, done  ) => {
         done(null, user.id);
     });
 
     // Used to decode the received cookie and persist session
     passport.deserializeUser((id, done) => {
-        console.log(" received ID from cookie :"+id);
+        console.log(" received ID from cookie :" + id);
         User.findById(id, (err, user) => done(err, user));
     });
 }
