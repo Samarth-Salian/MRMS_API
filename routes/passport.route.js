@@ -11,7 +11,7 @@ router.get('/google/callback',
   function(req, res) {
     // Successful authentication, redirect home.
     //res.send(req.user);
-    res.redirect(`http://localhost:3000/dashboard`);
+     res.redirect(process.env.DOMAIN + '/dashboard');
 });
 
 router.get("/logout", (req, res) => {
