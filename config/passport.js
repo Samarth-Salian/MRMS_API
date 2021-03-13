@@ -49,15 +49,4 @@ module.exports = function (passport) {
 
     ));
 
-    
-    // Used to stuff a piece of information into a cookie
-    passport.serializeUser((user, done  ) => {
-        done(null, user.id);
-    });
-
-    // Used to decode the received cookie and persist session
-    passport.deserializeUser((id, done) => {
-        console.log(" received ID from cookie :" + id);
-        User.findById(id, (err, user) => done(err, user));
-    });
 }
