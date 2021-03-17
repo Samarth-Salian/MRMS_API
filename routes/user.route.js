@@ -6,7 +6,7 @@ router.get('/search', (req, res) => {
 
 });
 
-router.get('/users', user.findAll);
+router.get('/', user.findAll);
 
 router.post('/', user.create);
 

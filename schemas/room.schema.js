@@ -10,7 +10,10 @@ module.exports = {
             phoneNo: Joi.string().pattern(/^([0]|\+91)?\d{10}/),
             floor: Joi.number().greater(-1).less(100).required(),
             buildingId: Joi.string().required(),
-            features: Joi.array().items(Joi.string())
+            voipAvailable : Joi.boolean(),
+            videoAvailable : Joi.boolean(),
+            lanAvailable : Joi.boolean(),
+            whiteBoardAvailable : Joi.boolean()
         });
         validateRequestWithSchema(req, res, next, schema);
     },

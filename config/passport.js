@@ -30,8 +30,8 @@ module.exports = function (passport) {
                         lastName: profile.name.familyName,
                         provider: profile.provider,
                         image: profile.photos[0].value,
-                        googleId: profile.id
-
+                        googleId: profile.id,
+                        adminRole: false
                     });
                     user.save(function (err) {
                         if (err) {

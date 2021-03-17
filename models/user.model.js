@@ -29,6 +29,9 @@ var userSchema = new Schema({
   image: {
     type: String
   },
+  adminRole: {
+    type: Boolean
+  }
 },
   {
     timestamps: true

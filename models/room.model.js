@@ -18,8 +18,17 @@ var userSchema = new Schema({
   buildingId: {
     type: String
   },
-  features: {
-    type: Array
+  voipAvailable: {
+    type: Boolean
+  },
+  videoAvailable: {
+    type: Boolean
+  },
+  lanAvailable: {
+    type: Boolean
+  },  
+  whiteBoardAvailable: {
+    type: Boolean
   }
 }, 
 {

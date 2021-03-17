@@ -9,7 +9,10 @@ exports.create = (req, res) => {
         phoneNo: room.phoneNo,
         floor: room.floor,
         buildingId: room.buildingId,
-        features: room.features
+        voipAvailable : room.voipAvailable,
+        videoAvailable : room.videoAvailable,
+        lanAvailable : room.lanAvailable,
+        whiteBoardAvailable : room.whiteBoardAvailable
     });
     newRoom.save().then(data => {
         res.send(data);
