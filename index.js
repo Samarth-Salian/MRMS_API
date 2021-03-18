@@ -30,6 +30,7 @@ app.use('/auth', require('./routes/passport.route'));
 app.use('/meetings', require('./routes/meeting.route'));
 app.use('/users', require('./routes/user.route'));
 app.use('/rooms', require('./routes/room.route'));
+app.use('/locations', require('./routes/location.route'));
 
 app.listen(process.env.PORT, () => {
     console.log(`listening to ${process.env.PORT} port running on ${process.env.NODE_ENV}`);

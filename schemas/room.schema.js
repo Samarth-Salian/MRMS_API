@@ -16,18 +16,6 @@ module.exports = {
             whiteBoardAvailable : Joi.boolean()
         });
         validateRequestWithSchema(req, res, next, schema);
-    },
-
-    updateMeetingValidate: (req, res, next) => {
-        const schema = Joi.object({
-            name: Joi.string(),
-            date: Joi.string().length(8).pattern(/^[0-9]+$/),
-            slotFrom: Joi.number().greater(0).less(97),
-            slotTo: Joi.number().greater(0).less(97),
-            roomId: Joi.string(),
-            userId: Joi.string().required()
-        });
-        validateRequestWithSchema(req, res, next, schema);
     }
 
 }
