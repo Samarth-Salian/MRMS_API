@@ -37,7 +37,19 @@ exports.findAll = (req, res) => {
 
 // Find a single room with a roomId
 exports.findOne = (req, res) => {
-
+    Room.findById(req.params.roomId)
+        .then(room => {
+            res.send(room);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "Room not found with id " + req.params.roomId
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving Room with id " + req.params.roomId
+            });
+        });
 };
 
 // Update a room identified by the roomId
